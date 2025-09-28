@@ -1,9 +1,10 @@
-/* =================================================
-   ESTILOS PARA NAVEGAÇÃO RESPONSIVA (MOBILE)
-   ================================================= */
+/* ==========================================================================
+   ESTILOS: mobile.css (Estilos para Navegação Responsiva)
+   ========================================================================== */
 
-/* Esconde o menu de navegação e o botão de tema em telas pequenas por padrão */
+/* ==== Mobile Breakpoint (<= 768px) ==== */
 @media (max-width: 768px) {
+  /* Oculta a navegação principal (movida via JS) e ajusta o header */
   header nav {
     /* Usamos visibility em vez de display:none para que o JS possa encontrar o elemento */
     visibility: hidden;
@@ -11,13 +12,32 @@
     left: -9999px;
   }
 
-  /* Mostra o botão do menu hambúrguer */
+  /* REFACTOR: Ajusta o layout do header-actions */
+  .header-actions {
+    /* Permite que o grupo de botões ocupe a largura total e use flex para centralizar o botão de tema */
+    flex-grow: 1; 
+    max-width: 50%; /* Limita para não ultrapassar o centro */
+    justify-content: flex-end; /* Move o menu-toggle para a direita (canto) */
+  }
+
+  /* REFACTOR: Move o botão de tema para o centro do header no mobile */
+  #theme-toggle {
+    /* Posiciona ABSOLUTO para forçar a centralização no header */
+    position: absolute;
+    left: 50%;
+    /* Adiciona prefixo para compatibilidade */
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  /* Mostra o botão do menu hambúrguer no canto direito */
   .menu-toggle {
-    display: block; /* Garante que o botão hambúrguer apareça */
+    display: block; 
+    z-index: 1001; 
   }
 }
 
-/* Estilos do botão do menu hambúrguer */
+/* ==== Estilos do Menu Hambúrguer (Iconografia) ==== */
 .menu-toggle {
   display: none; /* Escondido por padrão em telas grandes */
   background: transparent;
@@ -49,7 +69,7 @@
   width: 100%;
   height: 2px;
   background: var(--color-text-primary);
-  transition: top 0.3s 0.3s, transform 0.3s;
+  transition: top 0.3s 0.3s, -webkit-transform 0.3s, transform 0.3s;
 }
 
 .hamburger::before { top: -8px; }
@@ -57,10 +77,10 @@
 
 /* Animação do botão para "X" quando ativo */
 .menu-toggle.is-active .hamburger { background: transparent; }
-.menu-toggle.is-active .hamburger::before { top: 0; transform: rotate(45deg); }
-.menu-toggle.is-active .hamburger::after { top: 0; transform: rotate(-45deg); }
+.menu-toggle.is-active .hamburger::before { top: 0; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
+.menu-toggle.is-active .hamburger::after { top: 0; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
 
-/* Estilos do menu de navegação quando aberto no mobile */
+/* ==== Estilos do Menu de Navegação (Overlay) ==== */
 .nav-mobile {
   position: fixed;
   top: 0;
@@ -68,21 +88,27 @@
   width: 100%;
   height: 100%;
   /* Fundo semi-transparente para escurecer a tela */
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px); /* Efeito de desfoque para o fundo */
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2.5rem; /* Espaço entre a lista de links e o botão de tema */
+  
+  /* Transição de entrada e saída (com prefixo) */
+  -webkit-transform: translateX(100%);
   transform: translateX(100%);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
   transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
   opacity: 0;
   visibility: hidden;
 }
 
 .nav-mobile.is-active {
+  -webkit-transform: translateX(0);
   transform: translateX(0);
   opacity: 1;
   visibility: visible;
@@ -95,14 +121,14 @@
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
-  /* Garante que a navegação apareça corretamente dentro do menu mobile */
   visibility: visible;
 }
 
-/* Garante que a navegação que foi movida pelo JS fique visível dentro do menu mobile */
+/* Garante que a navegação (movida pelo JS) apareça */
 .nav-mobile nav {
   visibility: visible;
   position: static; /* Reseta o posicionamento absoluto */
+  flex-grow: 0; /* Impede que ocupe espaço desnecessário */
 }
 
 .nav-mobile a {
@@ -118,9 +144,11 @@
   color: var(--color-accent-hover); /* Cor de destaque quando ativo ou em hover */
 }
 
-/* Mostra o botão de tema dentro do menu mobile */
+/* Oculta o botão de tema na navegação principal quando em desktop, 
+   mas garante que ele fique visível dentro do menu mobile (movido pelo JS) */
 .nav-mobile #theme-toggle {
-  display: flex;
-  position: absolute; /* Posiciona o botão de tema no canto inferior */
-  bottom: 3rem;
+  display: flex; 
+  position: static; /* Reseta o posicionamento absoluto definido no media query acima */
+  -webkit-transform: none;
+  transform: none;
 }

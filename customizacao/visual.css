@@ -1,3 +1,7 @@
+/* ==========================================================================
+   ESTILOS: visual.css (Estilos Globais e Temas)
+   ========================================================================== */
+
 /* ==== Temas e Variáveis de Cor ==== */
 :root {
   /* Tema Claro */
@@ -55,6 +59,7 @@ body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
   line-height: 1.6;
+  -webkit-transition: background 0.3s, color 0.3s;
   transition: background 0.3s, color 0.3s;
   padding-bottom: 120px; /* Espaço para o rodapé fixo */
 }
@@ -194,21 +199,49 @@ footer {
   color: var(--color-text-secondary);
   display: inline-flex;
   align-items: center;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .tech-icons a:hover {
   color: var(--color-accent);
-  transform: scale(1.1);
 }
 
-.tech-icons svg {
+.tech-icons img, .tech-icons .icon-mask {
   height: 22px; /* Altura base para os ícones de tecnologia */
   width: auto; /* Largura automática para manter a proporção */
   max-width: 80px; /* Previne que logos muito largos (como IBM) ocupem espaço demais */
-  fill: currentColor; /* Faz o SVG usar a cor do texto pai */
+  transition: -webkit-transform 0.3s ease, transform 0.3s ease;
 }
 
+/* Técnica de máscara para colorir SVGs que não têm cor própria */
+.icon-mask {
+    /* Define o tamanho do ícone */
+    width: 32px;  
+    height: 32px; 
+    /* Define a cor de fundo que a máscara irá preencher */
+    background-color: var(--color-text-secondary); /* Cor Cinza Escuro. Mude conforme o desejado! */
+    /* Garante que o elemento se comporte como um bloco para respeitar width/height */
+    display: block; 
+    /* Centraliza o ícone dentro do link (opcional, mas recomendado) */
+    margin: auto; 
+    /* Controla como o SVG da máscara é dimensionado */
+    mask-size: contain; 
+    -webkit-mask-size: contain; 
+    /* Garante que o SVG não se repita */
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    transition: background-color 0.3s ease, -webkit-transform 0.3s ease, transform 0.3s ease;
+}
+
+.footer-tech .tech-icons a:hover .icon-mask {
+    background-color: var(--color-accent); /* Mude para a cor que desejar ao passar o mouse */
+}
+
+.tech-icons a:hover img,
+.tech-icons a:hover .icon-mask {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
 .footer-social {
   display: flex;
   gap: 1rem;
@@ -222,7 +255,7 @@ footer {
 .footer-social svg {
   height: 24px; /* Altura para os ícones sociais */
   width: auto;
-  transition: transform 0.3s ease;
+  transition: -webkit-transform 0.3s ease, transform 0.3s ease;
   fill: currentColor;
 }
 
@@ -231,6 +264,7 @@ footer {
 }
 
 .footer-social a:hover svg {
+  -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
 
@@ -440,5 +474,6 @@ footer {
     justify-content: center;
     text-align: center;
     gap: 1.5rem;
+    
   }
 }
