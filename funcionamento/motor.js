@@ -110,15 +110,51 @@ if (preloader) {
 // =================================================================================
 // LÓGICA DO TEMA (APLICAÇÃO IMEDIATA)
 // =================================================================================
-const applyTheme = (theme) => {
+const themeManager = {
+  apply(theme) {
     document.body.dataset.theme = theme;
     localStorage.setItem('theme', theme);
+    this.updateIcons(theme);
+  },
+
+  toggle() {
+    const newTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    this.apply(newTheme);
+  },
+
+  updateIcons(theme) {
+    document.querySelectorAll('#theme-toggle').forEach(button => {
+      const sunIcon = button.querySelector('.sun');
+      const moonIcon = button.querySelector('.moon');
+      if (!sunIcon || !moonIcon) return;
+
+      if (theme === 'light') {
+        sunIcon.classList.remove('visible');
+        moonIcon.classList.add('visible');
+      } else {
+        sunIcon.classList.add('visible');
+        moonIcon.classList.remove('visible');
+      }
+    });
+  },
+
+  listenForClicks() {
+    // Usa delegação de eventos para funcionar com botões clonados
+    document.body.addEventListener('click', (event) => {
+      if (event.target.closest('#theme-toggle')) {
+        this.toggle();
+      }
+    });
+  }
 };
 
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-applyTheme(initialTheme);
+// Aplica o tema inicial assim que o script carrega
+(() => {
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+  themeManager.apply(initialTheme);
+})();
 
 
 // =================================================================================
@@ -142,8 +178,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // =================================================================================
-  // SELETOR DE TEMA (EVENTO DE CLICK)
+  // SELETOR DE TEMA (INICIALIZAÇÃO)
   // =================================================================================
+  themeManager.listenForClicks();
+  themeManager.updateIcons(document.body.dataset.theme); // Garante que os ícones estejam corretos no carregamento
+
+  // =================================================================================
+  // INICIALIZAÇÃO DE FUNDO ANIMADO DO HERO
+  // =================================================================================
+  const heroBackground = document.getElementById('hero-background');
+  if (heroBackground) {
+      setupAnimatedBackground(heroBackground, 50);
+  }
+});
+
+/*
   const themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     const sunIcon = themeToggle.querySelector('.sun');
@@ -169,12 +218,4 @@ document.addEventListener('DOMContentLoaded', () => {
         updateIcons(newTheme);
     });
   }
-
-  // =================================================================================
-  // INICIALIZAÇÃO DE FUNDO ANIMADO DO HERO
-  // =================================================================================
-  const heroBackground = document.getElementById('hero-background');
-  if (heroBackground) {
-      setupAnimatedBackground(heroBackground, 50);
-  }
-});
+*/
