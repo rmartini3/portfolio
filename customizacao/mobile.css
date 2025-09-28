@@ -4,14 +4,13 @@
 
 /* Esconde o menu de navegação e o botão de tema em telas pequenas por padrão */
 @media (max-width: 768px) {
-  header nav,
-  #theme-toggle {
+  header nav {
     display: none;
   }
 
   /* Mostra o botão do menu hambúrguer */
   .menu-toggle {
-    display: block;
+    display: block; /* Garante que o botão hambúrguer apareça */
   }
 }
 
@@ -65,7 +64,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-bg-primary);
+  /* Fundo semi-transparente para escurecer a tela */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px); /* Efeito de desfoque para o fundo */
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -73,11 +74,15 @@
   align-items: center;
   gap: 2.5rem; /* Espaço entre a lista de links e o botão de tema */
   transform: translateX(100%);
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-mobile.is-active {
   transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
 }
 
 .nav-mobile ul {
@@ -91,7 +96,7 @@
 
 .nav-mobile a {
   font-size: 1.5rem; /* Fonte maior para toque */
-  color: var(--color-text-secondary);
+  color: #fff; /* Cor branca para melhor contraste com o fundo escuro */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
@@ -99,10 +104,12 @@
 
 .nav-mobile a:hover,
 .nav-mobile a.active {
-  color: var(--color-accent);
+  color: var(--color-accent-hover); /* Cor de destaque quando ativo ou em hover */
 }
 
 /* Mostra o botão de tema dentro do menu mobile */
 .nav-mobile #theme-toggle {
   display: flex;
+  position: absolute; /* Posiciona o botão de tema no canto inferior */
+  bottom: 3rem;
 }

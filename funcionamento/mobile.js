@@ -1,31 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
   const header = document.querySelector('header');
-  const mainNav = header ? header.querySelector('nav') : null;
-  const themeToggleBtn = header ? header.querySelector('#theme-toggle') : null;
+  const mainNav = document.querySelector('header nav');
+  const themeToggleBtn = document.getElementById('theme-toggle');
 
-  if (menuToggle && mainNav && themeToggleBtn) {
-    // Cria o container do menu móvel uma única vez
-    const mobileNav = document.createElement('div');
-    mobileNav.className = 'nav-mobile';
-    mobileNav.setAttribute('aria-hidden', 'true');
-
-    // Clona os elementos para dentro do menu móvel
-    mobileNav.appendChild(mainNav.cloneNode(true));
-    mobileNav.appendChild(themeToggleBtn.cloneNode(true));
-
-    // Adiciona o novo menu móvel ao corpo do documento
-    document.body.appendChild(mobileNav);
-
-    // Controla a abertura e fechamento do menu
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('is-active');
-      mobileNav.classList.toggle('is-active');
-
-      // Atualiza o atributo aria-expanded para acessibilidade
-      const isActive = mobileNav.classList.contains('is-active');
-      menuToggle.setAttribute('aria-expanded', isActive);
-      mobileNav.setAttribute('aria-hidden', !isActive);
-    });
+  if (!menuToggle || !header || !mainNav || !themeToggleBtn) {
+    console.error('Elementos essenciais para o menu mobile não foram encontrados.');
+    return;
   }
+
+  // Cria o container do menu móvel que ficará fixo na tela
+  const mobileNavContainer = document.createElement('div');
+  mobileNavContainer.className = 'nav-mobile';
+  mobileNavContainer.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(mobileNavContainer);
+
+  // Função para mover os elementos (nav e theme-toggle) para o lugar certo
+  const arrangeNavElements = () => {
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      // Se for mobile, move a nav e o theme-toggle para dentro do container do menu mobile
+      if (!mobileNavContainer.contains(mainNav)) {
+        mobileNavContainer.appendChild(mainNav);
+      }
+      if (!mobileNavContainer.contains(themeToggleBtn)) {
+        mobileNavContainer.appendChild(themeToggleBtn);
+      }
+    } else {
+      // Se for desktop, devolve os elementos para o header
+      const headerActions = header.querySelector('.header-actions');
+      if (!header.contains(mainNav)) {
+        header.insertBefore(mainNav, headerActions);
+      }
+      if (!headerActions.contains(themeToggleBtn)) {
+        headerActions.appendChild(themeToggleBtn);
+      }
+      // Garante que o menu mobile esteja fechado se redimensionar para desktop
+      menuToggle.classList.remove('is-active');
+      mobileNavContainer.classList.remove('is-active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileNavContainer.setAttribute('aria-hidden', 'true');
+    }
+  };
+
+  // Controla a abertura e fechamento do menu
+  menuToggle.addEventListener('click', () => {
+    const isActive = menuToggle.classList.toggle('is-active');
+    mobileNavContainer.classList.toggle('is-active');
+    menuToggle.setAttribute('aria-expanded', isActive);
+    mobileNavContainer.setAttribute('aria-hidden', !isActive);
+  });
+
+  // Executa a função ao carregar a página e ao redimensionar a janela
+  arrangeNavElements();
+  window.addEventListener('resize', arrangeNavElements);
 });
