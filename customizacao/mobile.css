@@ -5,7 +5,10 @@
 /* Esconde o menu de navegação e o botão de tema em telas pequenas por padrão */
 @media (max-width: 768px) {
   header nav {
-    display: none;
+    /* Usamos visibility em vez de display:none para que o JS possa encontrar o elemento */
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
   }
 
   /* Mostra o botão do menu hambúrguer */
@@ -92,6 +95,8 @@
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
+  /* Garante que a navegação apareça corretamente dentro do menu mobile */
+  visibility: visible;
 }
 
 .nav-mobile a {
