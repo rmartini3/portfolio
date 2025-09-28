@@ -1,7 +1,5 @@
 # Portfólio Profissional - Rafael Martiniano
 
-![Página Inicial do Portfólio](https://raw.githubusercontent.com/rmartini3/portfolio/main/imagem/readme/screenshot-home.png)
-
 Bem-vindo ao repositório do meu portfólio profissional! 
 Este projeto foi desenvolvido do zero para ser uma vitrine digital das minhas habilidades, experiências e projetos no universo da tecnologia.
 
