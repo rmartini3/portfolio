@@ -22,3 +22,7 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# Arquivos de build ou distribuição (se aplicável no futuro)
+dist/
+build/
