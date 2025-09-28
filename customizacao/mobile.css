@@ -1,0 +1,108 @@
+/* =================================================
+   ESTILOS PARA NAVEGAÇÃO RESPONSIVA (MOBILE)
+   ================================================= */
+
+/* Esconde o menu de navegação e o botão de tema em telas pequenas por padrão */
+@media (max-width: 768px) {
+  header nav,
+  #theme-toggle {
+    display: none;
+  }
+
+  /* Mostra o botão do menu hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Estilos do botão do menu hambúrguer */
+.menu-toggle {
+  display: none; /* Escondido por padrão em telas grandes */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0;
+  width: 24px;
+  height: 18px; /* Altura total do ícone */
+  position: relative;
+}
+
+.hamburger {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text-primary);
+  transition: background 0.3s 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text-primary);
+  transition: top 0.3s 0.3s, transform 0.3s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* Animação do botão para "X" quando ativo */
+.menu-toggle.is-active .hamburger { background: transparent; }
+.menu-toggle.is-active .hamburger::before { top: 0; transform: rotate(45deg); }
+.menu-toggle.is-active .hamburger::after { top: 0; transform: rotate(-45deg); }
+
+/* Estilos do menu de navegação quando aberto no mobile */
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-primary);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem; /* Espaço entre a lista de links e o botão de tema */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.nav-mobile.is-active {
+  transform: translateX(0);
+}
+
+.nav-mobile ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.nav-mobile a {
+  font-size: 1.5rem; /* Fonte maior para toque */
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-mobile a:hover,
+.nav-mobile a.active {
+  color: var(--color-accent);
+}
+
+/* Mostra o botão de tema dentro do menu mobile */
+.nav-mobile #theme-toggle {
+  display: flex;
+}
