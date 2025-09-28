@@ -1,0 +1,75 @@
+/* Estilos específicos para a página sobre */
+
+/* PARÁGRAFOS */
+.container p {
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* LISTAS PERSONALIZADAS */
+.container ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.container ul li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.container ul li::before {
+  content: "✔";
+  color: #58a6ff;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* DESTAQUES */
+.highlight {
+  color: #1f6feb;
+  font-weight: bold;
+}
+
+/* LINKS */
+.container a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+/* Destaque para citações ou frases pessoais */
+.sobre-citacao {
+  display: block;
+  font-style: italic;
+  color: #58a6ff;
+  border-left: 4px solid #58a6ff;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Estilo para informações principais */
+.sobre-info {
+  background: #161b22;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(88,166,255,0.08);
+  color: #e6edf3;
+}
+
+/* Animação de fade-in */
+.sobre-info {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.sobre-info.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

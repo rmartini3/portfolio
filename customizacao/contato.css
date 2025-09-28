@@ -1,0 +1,65 @@
+/* Estilos específicos para a página de contato */
+
+main.container {
+  max-width: 700px;
+}
+
+.contato-lista {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 1.1rem;
+}
+
+.contato-item:last-child {
+  border-bottom: none;
+}
+
+.contato-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+.contato-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.contato-texto a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contato-texto a:hover {
+  text-decoration: underline;
+  color: var(--color-accent-hover);
+}
+
+.contato-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .contato-item {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,72 @@
+/* Grid de habilidades técnicas */
+.habilidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.habilidade {
+  background: #21262d;
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #e6edf3;
+  font-size: 1.08rem;
+  box-shadow: 0 2px 8px rgba(88,166,255,0.07);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.habilidade:hover {
+  background: #2d333b;
+  transform: translateY(-4px) scale(1.03);
+  color: #58a6ff;
+}
+
+.habilidade strong {
+  color: #58a6ff;
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+  .habilidades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animação de fade-in para os cards de habilidade */
+.habilidade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.habilidade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para as novas seções de habilidades */
+.habilidades-secao {
+  margin-bottom: 3rem;
+}
+
+.habilidades-secao h2 {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.habilidade-icon {
+  font-size: 1.5rem;
+}

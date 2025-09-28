@@ -1,0 +1,313 @@
+/* ==== HERO DE IMPACTO ==== */
+#hero {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-primary));
+  padding: 4rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+#hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  z-index: 0;
+  opacity: 0.1; /* Make it subtle */
+}
+
+.hero-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--color-accent);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 5px 20px var(--shadow-color);
+}
+
+#hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.subheadline {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+#hero p {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.botoes-hero {
+  display: flex;
+  gap: 1rem;
+}
+
+.botao-destaque, .botao-secundario {
+  padding: 0.8rem 1.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.botao-destaque {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+.botao-destaque:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.botao-secundario {
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.botao-secundario:hover {
+  background: var(--color-border);
+  transform: translateY(-2px);
+}
+
+/* ==== SEÇÃO EMPRESAS ==== */
+#empresas {
+  padding: 3rem 2rem;
+  /* Novo fundo em gradiente para garantir contraste em ambos os temas */
+  background: linear-gradient(135deg, #1c3d5a, #112132);
+  text-align: center;
+}
+
+#empresas h2 {
+  margin-bottom: 2rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.logos-empresas {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.logos-empresas img {
+  max-height: 40px; /* Ajuste a altura máxima dos logos */
+  max-width: 150px; /* Ajuste a largura máxima */
+  opacity: 0.7; /* Opacidade inicial para os logos */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.logos-empresas a:hover img {
+  opacity: 1; /* Opacidade total no hover */
+  transform: scale(1.05); /* Efeito sutil de zoom */
+}
+
+/* ==== SEÇÃO DIFERENCIAIS ==== */
+#diferenciais {
+  padding: 4rem 2rem;
+}
+
+#diferenciais h2 { text-align: center; margin-bottom: 3rem; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  list-style: none;
+}
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+}
+
+/* ==== SEÇÃO CTA FINAL ==== */
+#cta {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#cta h2 {
+  font-size: 2rem;
+  max-width: 600px;
+}
+
+#cta .botao-destaque {
+  background: var(--color-bg-primary);
+  color: var(--color-accent);
+}
+
+#cta .botao-destaque:hover {
+  background: #fff;
+}
+
+/* Adicionando o CSS do preloader-logo */
+.preloader-logo {
+    width: 150px; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* =================================================
+   EFEITO DE CUBOS ANIMADOS PARA O HERO
+   ================================================= */
+
+.cubes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Coloca os cubos atrás do conteúdo do hero */
+}
+
+.cube {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: var(--color-cube); /* Cor dos cubos adaptável ao tema */
+  animation: animate-cubes-down 25s linear infinite;
+  top: -150px; /* Posição inicial acima da tela */
+  border-radius: 4px;
+}
+
+/* Variações de tamanho, posição e duração para um efeito mais orgânico */
+.cube:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.cube:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.cube:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.cube:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.cube:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.cube:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.cube:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.cube:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+/* Animação dos cubos */
+@keyframes animate-cubes-down {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}

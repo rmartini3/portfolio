@@ -1,0 +1,152 @@
+/* Estilos específicos para a página de certificações */
+
+.cert-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2.5rem auto 0 auto;
+  max-width: 1000px;
+}
+.cert-card {
+  background: #21262d;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(88,166,255,0.10);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 240px;
+  max-width: 320px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cert-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(88,166,255,0.18);
+}
+.cert-card .badge {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.cert-card a {
+  color: #1fa4ff;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  transition: color 0.2s;
+  word-break: break-word;
+}
+.cert-card a:hover {
+  color: #58a6ff;
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .cert-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .cert-card {
+    width: 90%;
+    min-width: unset;
+    max-width: 400px;
+  }
+}
+
+/* Animação de fade-in para os cards de certificação */
+.cert-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.cert-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =================================================
+   ESTILOS DA PÁGINA DE CERTIFICAÇÕES
+   ================================================= */
+
+.certificacoes-principais h2,
+.outros-cursos h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.cert-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 4rem;
+}
+
+.cert-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 280px; /* Largura máxima para cada card */
+  text-align: center;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.cert-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  height: 100%;
+}
+
+.cert-logo {
+  height: 80px;  /* Altura padrão para todos os logos */
+  width: auto;   /* Largura automática para manter a proporção */
+  object-fit: contain; /* Garante que a imagem se ajuste sem distorcer */
+  margin-bottom: 0.5rem;
+}
+
+.cert-verification-code {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.outros-cursos {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.outros-cursos p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  color: var(--color-text-secondary);
+}
+
+.credly-link .botao-destaque {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
