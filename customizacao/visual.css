@@ -1,5 +1,12 @@
 /* ==========================================================================
    ESTILOS: visual.css (Estilos Globais e Temas)
+   DESCRIÇÃO: Define os estilos globais, temas (claro/escuro), reset,
+              fontes e layout base para header, footer e preloader.
+   ATUALIZAÇÃO: 2024-10-27 | Rafael Martiniano
+   MODIFICAÇÕES:
+     - Adicionado prefixo -webkit- para transições.
+     - Removido `transform` duplicado em `.footer-social a:hover svg`.
+     - Removida classe `.icon-mask` e estilos associados.
    ========================================================================== */
 
 /* ==== Temas e Variáveis de Cor ==== */
@@ -77,14 +84,15 @@ header {
   background: var(--color-bg-secondary);
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-between; /* Garante espaçamento entre logo e ações */
+  display: grid; /* Alterado para grid para consistência com o mobile */
+  grid-template-columns: auto 1fr auto; /* [Logo] [Nav] [Ações] */
   align-items: center;
 }
 
 .logo-link-wrapper {
   display: inline-block;
   position: relative;
+  grid-column: 1; /* Garante que o logo fique na primeira coluna */
 }
 
 .logo-container {
@@ -106,13 +114,15 @@ header {
 }
 
 nav {
-  flex-grow: 1;
+  grid-column: 2; /* A navegação ocupa a coluna central */
 }
 
 .header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+  grid-column: 3; /* As ações ficam na terceira coluna */
+  justify-self: end; /* Alinha as ações à direita */
 }
 
 #theme-toggle {
@@ -150,6 +160,10 @@ nav a {
 
 nav a:hover { color: var(--color-accent); }
 
+/* ==========================================================================
+   ESTILOS: Footer (Rodapé)
+   ========================================================================== */
+
 footer {
   position: fixed;
   bottom: 0;
@@ -157,105 +171,80 @@ footer {
   width: 100%;
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   z-index: 1000;
   transition: background-color 0.3s ease;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
-.footer-info p {
-  margin: 0;
+.footer-col {
+  flex: 1;
+}
+
+/* 1. Coluna Esquerda (Copyright) */
+.footer-info {
+  text-align: left;
   font-size: 0.85rem;
   color: var(--color-text-secondary);
 }
 
+/* 2. Coluna Central (Tecnologias) */
 .footer-tech {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  text-align: center;
 }
 
-.footer-tech span {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
+.footer-tech h4 {
+  margin: 0 0 0.8rem 0;
+  font-size: 0.9rem;
   font-weight: 500;
+  color: var(--color-text-secondary);
 }
 
 .tech-icons {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 
 .tech-icons a {
   color: var(--color-text-secondary);
-  display: inline-flex;
-  align-items: center;
   transition: color 0.3s ease;
+}
+
+.tech-icons svg {
+  height: 22px;
+  width: auto;
+  fill: currentColor;
+  transition: transform 0.3s ease;
 }
 
 .tech-icons a:hover {
   color: var(--color-accent);
 }
 
-.tech-icons img, .tech-icons .icon-mask {
-  height: 22px; /* Altura base para os ícones de tecnologia */
-  width: auto; /* Largura automática para manter a proporção */
-  max-width: 80px; /* Previne que logos muito largos (como IBM) ocupem espaço demais */
-  transition: -webkit-transform 0.3s ease, transform 0.3s ease;
-}
-
-/* Técnica de máscara para colorir SVGs que não têm cor própria */
-.icon-mask {
-    /* Define o tamanho do ícone */
-    width: 32px;  
-    height: 32px; 
-    /* Define a cor de fundo que a máscara irá preencher */
-    background-color: var(--color-text-secondary); /* Cor Cinza Escuro. Mude conforme o desejado! */
-    /* Garante que o elemento se comporte como um bloco para respeitar width/height */
-    display: block; 
-    /* Centraliza o ícone dentro do link (opcional, mas recomendado) */
-    margin: auto; 
-    /* Controla como o SVG da máscara é dimensionado */
-    mask-size: contain; 
-    -webkit-mask-size: contain; 
-    /* Garante que o SVG não se repita */
-    mask-repeat: no-repeat;
-    -webkit-mask-repeat: no-repeat;
-    transition: background-color 0.3s ease, -webkit-transform 0.3s ease, transform 0.3s ease;
-}
-
-.footer-tech .tech-icons a:hover .icon-mask {
-    background-color: var(--color-accent); /* Mude para a cor que desejar ao passar o mouse */
-}
-
-.tech-icons a:hover img,
-.tech-icons a:hover .icon-mask {
-  -webkit-transform: scale(1.1);
+.tech-icons a:hover svg {
   transform: scale(1.1);
 }
+
+/* 3. Coluna Direita (Social) */
 .footer-social {
   display: flex;
+  justify-content: flex-end;
   gap: 1rem;
 }
 
 .footer-social a {
   color: var(--color-text-secondary);
+  -webkit-transition: color 0.3s;
   transition: color 0.3s;
 }
 
 .footer-social svg {
   height: 24px; /* Altura para os ícones sociais */
-  width: auto;
-  transition: -webkit-transform 0.3s ease, transform 0.3s ease;
   fill: currentColor;
 }
 
@@ -265,7 +254,6 @@ footer {
 
 .footer-social a:hover svg {
   -webkit-transform: scale(1.1);
-  transform: scale(1.1);
 }
 
 /* ==== Hero Global ==== */
@@ -451,6 +439,7 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  -webkit-transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
   transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
 
@@ -469,11 +458,18 @@ footer {
     padding-bottom: 180px; /* Aumenta o espaço para o rodapé em telas menores */
   }
 
-  .footer-content {
+  footer {
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     gap: 1.5rem;
-    
+  }
+
+  .footer-col {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-tech, .footer-social {
+    justify-content: center;
   }
 }

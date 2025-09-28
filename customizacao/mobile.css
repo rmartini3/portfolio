@@ -1,154 +1,135 @@
 /* ==========================================================================
-   ESTILOS: mobile.css (Estilos para Navegação Responsiva)
+   ESTILOS: mobile.css (Navegação Responsiva - AVANÇADA)
    ========================================================================== */
 
-/* ==== Mobile Breakpoint (<= 768px) ==== */
-@media (max-width: 768px) {
-  /* Oculta a navegação principal (movida via JS) e ajusta o header */
-  header nav {
-    /* Usamos visibility em vez de display:none para que o JS possa encontrar o elemento */
-    visibility: hidden;
-    position: absolute;
-    left: -9999px;
-  }
+/* --- Estilos Base (Desktop e Default) --- */
 
-  /* REFACTOR: Ajusta o layout do header-actions */
-  .header-actions {
-    /* Permite que o grupo de botões ocupe a largura total e use flex para centralizar o botão de tema */
-    flex-grow: 1; 
-    max-width: 50%; /* Limita para não ultrapassar o centro */
-    justify-content: flex-end; /* Move o menu-toggle para a direita (canto) */
-  }
-
-  /* REFACTOR: Move o botão de tema para o centro do header no mobile */
-  #theme-toggle {
-    /* Posiciona ABSOLUTO para forçar a centralização no header */
-    position: absolute;
-    left: 50%;
-    /* Adiciona prefixo para compatibilidade */
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
-
-  /* Mostra o botão do menu hambúrguer no canto direito */
-  .menu-toggle {
-    display: block; 
-    z-index: 1001; 
-  }
+/* Garantia de que o menu de links está visível e horizontal no Desktop */
+header nav {
+    display: block;
 }
 
-/* ==== Estilos do Menu Hambúrguer (Iconografia) ==== */
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem; 
+    align-items: center;
+}
+
+/* O menu-toggle deve estar escondido por padrão no Desktop */
 .menu-toggle {
-  display: none; /* Escondido por padrão em telas grandes */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-  padding: 0;
-  width: 24px;
-  height: 18px; /* Altura total do ícone */
-  position: relative;
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    width: 24px;
+    height: 18px;
+    position: relative;
 }
 
-.hamburger {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--color-text-primary);
-  transition: background 0.3s 0.3s;
-}
+/* --- Estilos do Hambúrguer e Overlay (Mantidos) --- */
 
+.hamburger,
 .hamburger::before,
 .hamburger::after {
   content: '';
+  display: block;
   position: absolute;
   left: 0;
   width: 100%;
   height: 2px;
   background: var(--color-text-primary);
-  transition: top 0.3s 0.3s, -webkit-transform 0.3s, transform 0.3s;
+  transition: all 0.3s ease-in-out;
 }
 
+.hamburger { top: 50%; transform: translateY(-50%); }
 .hamburger::before { top: -8px; }
 .hamburger::after { top: 8px; }
 
-/* Animação do botão para "X" quando ativo */
+/* Animação para "X" */
 .menu-toggle.is-active .hamburger { background: transparent; }
-.menu-toggle.is-active .hamburger::before { top: 0; -webkit-transform: rotate(45deg); transform: rotate(45deg); }
-.menu-toggle.is-active .hamburger::after { top: 0; -webkit-transform: rotate(-45deg); transform: rotate(-45deg); }
+.menu-toggle.is-active .hamburger::before { top: 0; transform: rotate(45deg); }
+.menu-toggle.is-active .hamburger::after { top: 0; transform: rotate(-45deg); }
+.menu-toggle.is-active .hamburger::before,
+.menu-toggle.is-active .hamburger::after { background: #fff; }
 
-/* ==== Estilos do Menu de Navegação (Overlay) ==== */
+/* Menu Overlay (Off-canvas) */
 .nav-mobile {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* Fundo semi-transparente para escurecer a tela */
   background: rgba(0, 0, 0, 0.7);
-  -webkit-backdrop-filter: blur(5px); 
+  
+  /* CORREÇÃO DE COMPATIBILIDADE SAFARI */
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2.5rem; /* Espaço entre a lista de links e o botão de tema */
-  
-  /* Transição de entrada e saída (com prefixo) */
-  -webkit-transform: translateX(100%);
-  transform: translateX(100%);
-  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
-  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
+  gap: 2.5rem;
   opacity: 0;
   visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s 0.4s;
 }
 
 .nav-mobile.is-active {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
   opacity: 1;
   visibility: visible;
+  transform: translateX(0);
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s 0s; 
 }
 
 .nav-mobile ul {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   text-align: center;
-  visibility: visible;
 }
 
-/* Garante que a navegação (movida pelo JS) apareça */
-.nav-mobile nav {
-  visibility: visible;
-  position: static; /* Reseta o posicionamento absoluto */
-  flex-grow: 0; /* Impede que ocupe espaço desnecessário */
-}
-
-.nav-mobile a {
-  font-size: 1.5rem; /* Fonte maior para toque */
-  color: #fff; /* Cor branca para melhor contraste com o fundo escuro */
-  text-decoration: none;
-  font-weight: 500;
+.nav-mobile nav { display: block; }
+.nav-mobile a { 
+  font-size: 1.5rem; 
+  color: #fff; 
+  text-decoration: none; 
+  font-weight: 500; 
   transition: color 0.2s;
 }
 
 .nav-mobile a:hover,
-.nav-mobile a.active {
-  color: var(--color-accent-hover); /* Cor de destaque quando ativo ou em hover */
-}
+.nav-mobile a.active { color: var(--color-accent-hover); }
+.nav-mobile #theme-toggle { display: flex; }
 
-/* Oculta o botão de tema na navegação principal quando em desktop, 
-   mas garante que ele fique visível dentro do menu mobile (movido pelo JS) */
-.nav-mobile #theme-toggle {
-  display: flex; 
-  position: static; /* Reseta o posicionamento absoluto definido no media query acima */
-  -webkit-transform: none;
-  transform: none;
+
+/* --- Ícone do Menu Hambúrguer --- */
+
+/* ==== Breakpoint Mobile (<= 768px) ==== */
+@media (max-width: 768px) {
+  
+  /* 1. Esconde a navegação principal do cabeçalho */
+  header nav {
+    display: none;
+  }
+
+  /* 2. Mostra o botão de menu hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* 3. Esconde o botão de tema do cabeçalho */
+  .header-actions #theme-toggle {
+    display: none;
+  }
 }

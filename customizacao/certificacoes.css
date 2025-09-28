@@ -1,5 +1,11 @@
 /* ==========================================================================
    ESTILOS: certificacoes.css (Página de Certificações)
+   DESCRIÇÃO: Estiliza a seção de certificações, incluindo cards e layout.
+   ATUALIZAÇÃO: 2024-10-27 | Rafael Martiniano
+   MODIFICAÇÕES:
+     - Adicionado prefixo -webkit- para transições.
+     - Removido bloco de comentário obsoleto `[data-aos]`.
+     - Garantida a consistência das microinterações.
    ========================================================================== */
 
 /* =================================================
