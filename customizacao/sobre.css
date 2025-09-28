@@ -20,8 +20,8 @@
 }
 
 .container ul li::before {
-  content: "✔";
-  color: #58a6ff;
+  content: "✓";
+  color: var(--color-accent);
   position: absolute;
   left: 0;
   font-weight: bold;
@@ -29,13 +29,13 @@
 
 /* DESTAQUES */
 .highlight {
-  color: #1f6feb;
+  color: var(--color-accent-hover);
   font-weight: bold;
 }
 
 /* LINKS */
 .container a {
-  color: #58a6ff;
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -47,19 +47,19 @@
 .sobre-citacao {
   display: block;
   font-style: italic;
-  color: #58a6ff;
-  border-left: 4px solid #58a6ff;
+  color: var(--color-accent);
+  border-left: 4px solid var(--color-accent);
   padding-left: 1rem;
   margin: 1.5rem 0;
 }
 
 /* Estilo para informações principais */
 .sobre-info {
-  background: #161b22;
+  background: var(--color-bg-secondary);
   border-radius: 12px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(88,166,255,0.08);
-  color: #e6edf3;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  color: var(--color-text-primary);
 }
 
 /* Animação de fade-in */
