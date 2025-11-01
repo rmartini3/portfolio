@@ -1,34 +1,32 @@
 /* ==========================================================================
-   Estilos da Página de Projetos
+   ESTILOS: projetos.css (Página de Projetos)
+   DESCRIÇÃO: Estilos para os cards e layout da página de projetos.
+   ATUALIZAÇÃO: 2024-10-28 | Gemini Code Assist
+   MODIFICAÇÕES:
+     - Criação do arquivo e adição de estilos para os cards de projeto.
+     - Adicionado estilo para o estado "em-breve".
    ========================================================================== */
+
 .projetos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 2rem 0;
+  padding: 0;
+  margin-top: 2rem;
 }
 
 .card-projeto {
-  background-color: var(--color-card-bg);
-  border-radius: 8px; /* Valor consistente */
-  overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-projeto:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px var(--shadow-color);
-}
-
-.card-projeto-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .card-projeto-body {
@@ -39,8 +37,8 @@
 }
 
 .card-projeto-titulo {
-  font-size: 1.3rem;
-  margin-top: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
   color: var(--color-text-primary);
 }
@@ -48,7 +46,6 @@
 .card-projeto-descricao {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
-  line-height: 1.6;
   flex-grow: 1;
   margin-bottom: 1.5rem;
 }
@@ -61,46 +58,42 @@
 }
 
 .tag {
-  background-color: var(--color-cube); /* Reutilizando cor sutil do tema */
-  color: var(--color-accent);
-  padding: 0.3rem 0.7rem;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 500;
 }
 
 .card-projeto-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: auto; /* Alinha os botões na parte inferior */
+  margin-top: auto; /* Empurra os links para o final do card */
 }
 
 .btn-projeto {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
   background-color: var(--color-accent);
   color: var(--color-bg-primary);
-  text-decoration: none;
+  padding: 0.6rem 1.2rem;
   border-radius: 6px;
+  text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   text-align: center;
-  border: 1px solid var(--color-accent);
+  transition: background-color 0.3s ease;
 }
 
 .btn-projeto:hover {
   background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  transform: translateY(-2px);
 }
 
-/* Estilo secundário para o botão "Ver Demo" */
-.btn-projeto.btn-demo {
-  background-color: transparent;
-  color: var(--color-accent);
+/* Estilo para projetos marcados como "Em Breve" */
+.btn-projeto.em-breve {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  pointer-events: none; /* Desabilita eventos de clique */
 }
 
-.btn-projeto.btn-demo:hover {
-  background-color: var(--color-border);
-  color: var(--color-accent-hover);
+.btn-projeto.em-breve:hover {
+  background-color: var(--color-bg-secondary); /* Mantém a cor no hover */
 }
