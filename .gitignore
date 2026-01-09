@@ -1,0 +1,28 @@
+# Arquivos e pastas de configuração de editores de código
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pastas de dependências (boa prática, caso use no futuro)
+node_modules/
+
+# Arquivos de log
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Arquivos de ambiente (para senhas e chaves de API)
+.env
+.env.local
+.env.*.local
+
+# Arquivos de build ou distribuição (se aplicável no futuro)
+dist/
+build/

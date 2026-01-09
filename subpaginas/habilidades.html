@@ -1,0 +1,194 @@
+<!-- ==========================================================================
+     PÁGINA: Habilidades (habilidades.html)
+     DESCRIÇÃO: Página com a listagem de habilidades técnicas e comportamentais.
+     ATUALIZAÇÃO: 2024-10-27 | Rafael Martiniano
+     MODIFICAÇÕES:
+       - Reativado link "Projetos" na navegação.
+       - Refatorado footer para usar SVGs inline.
+     ========================================================================== -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Open Graph / LinkedIn / Instagram -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rafael-martiniano.vercel.app/subpaginas/habilidades.html">
+  <meta property="og:title" content="Habilidades - Rafael Martiniano">
+  <meta property="og:description" content="Minhas competências técnicas, comportamentais, de gestão e desenvolvimento de software.">
+  <meta property="og:image" content="https://rafael-martiniano.vercel.app/imagem/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="article:author" content="Rafael Martiniano">
+  <meta property="og:site_name" content="Portfólio de Rafael Martiniano">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://rafael-martiniano.vercel.app/subpaginas/habilidades.html">
+  <meta property="twitter:title" content="Habilidades - Rafael Martiniano">
+  <meta property="twitter:description" content="Minhas competências técnicas, comportamentais, de gestão e desenvolvimento de software.">
+  <meta property="twitter:image" content="https://rafael-martiniano.vercel.app/imagem/og-image.png">
+
+  <title>Habilidades - Rafael Martiniano</title>
+  <link rel="icon" href="../imagem/Logo/Logo_RM_Gold.png" type="image/png">
+  <link rel="stylesheet" href="../customizacao/visual.css">
+  <link rel="stylesheet" href="../customizacao/habilidades.css">
+  <link rel="stylesheet" href="../customizacao/mobile.css">
+  <style>
+    /* Remove os marcadores (pontos) das listas de habilidades */
+    .habilidades-grid {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" aria-label="Voltar para a página inicial" class="logo-link-wrapper">
+      <div class="logo-container">
+        <img src="../imagem/Logo/Logo_RM_Gold.png" alt="Logo RM" class="header-logo">
+        <div class="logo-overlay"></div>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="experiencia.html">Experiência</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
+        <li><a class="active" href="habilidades.html">Habilidades</a></li>
+        <li><a href="certificacoes.html">Certificações</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+      <button id="theme-toggle" aria-label="Mudar tema">
+        <div class="sun"></div>
+        <div class="moon"></div>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-hero">
+      <h1>Habilidades</h1>
+      <p>Minhas competências técnicas, comportamentais e de gestão.</p>
+    </section>
+
+    <!-- Seção de Habilidades Técnicas -->
+    <section class="habilidades-secao">
+      <h2>
+        <span class="habilidade-icon" aria-hidden="true">💻</span>
+        Habilidades Técnicas
+      </h2>
+      <ul class="habilidades-grid">
+        <li class="habilidade"><strong>Suporte Técnico:</strong> Presencial e remoto</li>
+        <li class="habilidade"><strong>Manutenção:</strong> Hardware e software</li>
+        <li class="habilidade"><strong>Sistemas Operacionais:</strong> Instalação e configuração</li>
+        <li class="habilidade"><strong>Redes:</strong> Configuração de redes e dispositivos</li>
+        <li class="habilidade"><strong>Monitoramento:</strong> Experiência em NOC (24x7)</li>
+        <li class="habilidade"><strong>Gestão de Ativos:</strong> Gerenciamento de ativos de TI</li>
+        <li class="habilidade"><strong>Projetos de Infraestrutura:</strong>Rollout, Instalação de Switchs em Racks, Preparação de Computadores, com imagens personalizadas de SO e Instalação Massiva</li>
+      </ul>
+    </section>
+
+    <!-- Seção de Habilidades Comportamentais -->
+    <section class="habilidades-secao">
+      <h2>
+        <span class="habilidade-icon" aria-hidden="true">👥</span>
+        Habilidades Comportamentais
+      </h2>
+      <ul class="habilidades-grid">
+        <li class="habilidade">Atendimento ao Cliente</li>
+        <li class="habilidade">Comunicação Eficiente</li>
+        <li class="habilidade">Organização</li>
+        <li class="habilidade">Trabalho em Equipe</li>
+        <li class="habilidade">Proatividade</li>
+        <li class="habilidade">Resolução de Problemas</li>
+      </ul>
+    </section>
+
+    <!-- Seção de Gestão e Metodologias -->
+    <section class="habilidades-secao">
+      <h2>
+        <span class="habilidade-icon" aria-hidden="true">📊</span>
+        Gestão e Metodologias
+      </h2>
+      <ul class="habilidades-grid">
+        <li class="habilidade">Gestão de Infraestrutura de TI</li>
+        <li class="habilidade">Gestão de Usuários e Fornecedores</li>
+        <li class="habilidade">Melhoria de Processos</li>
+        <li class="habilidade">Análise de Causa Raiz (RCA)</li>
+        <li class="habilidade">Metodologias Agile</li>
+        <li class="habilidade">Six Sigma White Belt</li>
+      </ul>
+    </section>
+
+    <!-- Seção de Desenvolvimento de Software -->
+    <section class="habilidades-secao">
+      <h2>
+        <span class="habilidade-icon" aria-hidden="true">👨‍💻</span>
+        Desenvolvimento de Software
+      </h2>
+      <p class="habilidades-subtitulo">Competências adquiridas e aplicadas nos projetos em meu portfólio.</p>
+      <ul class="habilidades-grid dev-skills">
+        <li class="habilidade"><strong>Python:</strong> Desenvolvimento de aplicações com Streamlit e integração com APIs (Groq), como demonstrado no projeto <em>Assistente de IA para Profissionais de TI</em>. <span class="skill-level" data-level="intermediario">Intermediário</span></li>
+        <li class="habilidade"><strong>Shell Script (Bash):</strong> Criação de scripts robustos para automação de infraestrutura, provisionamento de ambientes (Zabbix, Grafana) e gerenciamento de sistemas via WSL2. <span class="skill-level" data-level="intermediario">Intermediário</span></li>
+        <li class="habilidade"><strong>JavaScript (ES6+):</strong> Desenvolvimento de lógica frontend com arquitetura modular e manipulação do DOM, aplicado na criação de componentes reutilizáveis. <span class="skill-level" data-level="intermediario">Intermediário</span></li>
+        <li class="habilidade"><strong>HTML5 & CSS3:</strong> Estruturação semântica de conteúdo e criação de layouts complexos, responsivos e visualmente atraentes. <span class="skill-level" data-level="avancado">Avançado</span></li>
+        <li class="habilidade"><strong>Git & GitHub:</strong> Controle de versão para gerenciamento de código-fonte, colaboração e documentação de projetos. <span class="skill-level" data-level="intermediario">Intermediário</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-col footer-info">
+      <p>© 2025 - Rafael Martiniano | Todos os direitos reservados.</p>
+      <div class="footer-legal">
+        <a href="politica-privacidade.html">Política de Privacidade</a> |
+        <a href="termos-de-uso.html">Termos de Uso</a>
+      </div>
+    </div>
+    <div class="footer-col footer-tech">
+      <h4>Tecnologias:</h4>
+      <div class="tech-icons">
+          <!-- Azure -->
+          <a href="https://azure.microsoft.com/pt-br/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site do Microsoft Azure">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="tech-svg"><circle cx="512" cy="512" r="512" style="fill:#0078d4"></circle><path d="M729.08 730.5a33.88 33.88 0 0 0 32.13-44.76L623.89 279.07A33.88 33.88 0 0 0 591.81 256H432.17a33.88 33.88 0 0 0-32.09 23.07L262.8 685.76a33.88 33.88 0 0 0 32.13 44.74h99.16a33.88 33.88 0 0 0 32.11-23.07l20.44-60.49 103.46 76.87a33.85 33.85 0 0 0 20.21 6.69M505.8 468.4 581.6 693a11.29 11.29 0 0 1-10.67 14.91h-.63a11.29 11.29 0 0 1-6.74-2.22L369.32 561.38h101.51m132 146.54a33.54 33.54 0 0 0 .15-22.13L465.77 279.07l-.15-.42h126.21a11.29 11.29 0 0 1 10.71 7.66L739.79 693a11.29 11.29 0 0 1-7.07 14.31" style="fill:#fff"></path></svg>
+          </a>
+          <!-- Microsoft 365 -->
+          <a href="https://www.microsoft.com/pt-br/microsoft-365" target="_blank" rel="noopener noreferrer" aria-label="Visitar site do Microsoft 365">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 291.346 291.346" xml:space="preserve" class="tech-svg"><g><path style="fill:#26A6D1;" d="M117.547,266.156L0,249.141v-94.296h117.547V266.156z"></path><path style="fill:#3DB39E;" d="M291.346,136.51H136.31l0.055-114.06L291.346,0.009V136.51z"></path><path style="fill:#F4B459;" d="M291.346,291.337l-155.091-22.459l0.182-114.015h154.909V291.337z"></path><path style="fill:#E2574C;" d="M117.547,136.51H0V42.205l117.547-17.024V136.51z"></path></g></svg>
+          </a>
+          <!-- IBM -->
+          <a href="https://www.ibm.com/br-pt" target="_blank" rel="noopener noreferrer" aria-label="Visitar site da IBM">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="tech-svg"><circle cx="512" cy="512" r="512" style="fill:#0f62fe"></circle><path d="M223.9 611.5h112v16h-112v-16zm0-30.8h112v16.1h-112v-16.1zm31.9-30.7h48.1v16.1h-48.1V550zm0-30.7h48.1v16.1h-48.1v-16.1zm0-30.7h48.1v16.1h-48.1v-16.1zm0-30.8h48.1v16.1h-48.1v-16.1zm-31.9-30.7h112v16.1h-112v-16.1zm0-30.7h112v16.1h-112v-16.1zm128 200.4h172.3c2.9-4.9 5.1-10.4 6.4-16.1H351.9v16.1zm158.9-77.5H384v16.1h140.3c-3.6-6.1-8.1-11.5-13.5-16.1zm-126.9-30.7v16.1h126.9c5.3-4.5 9.8-9.9 13.4-16.1H383.9zm140.3-61.5H351.9v16.1h178.7c-1.4-5.6-3.6-11-6.4-16.1zm-52.9-30.7H351.9v16.1h160.5c-11.2-10.3-25.9-16.1-41.1-16.1zm-87.4 61.4h48v16.1h-48v-16.1zm96.1 16.1h50.2c1.4-5.1 2.2-10.6 2.2-16.1H480v16.1zM383.9 550h48v16.1h-48V550zm96.1 0v16.1h52.4c0-5.5-.7-11-2.2-16.1H480zm-128.1 77.4 119.3.2c16 0 30.4-6.2 41.2-16.1H351.9v15.9zM544 611.5h80v16h-80v-16zm0-30.8h80v16.1h-80v-16.1zm32-30.7h48v16.1h-48V550zm0-30.7h48v16.1h-48v-16.1zm70.3-92.2H544v16.1h107.8l-5.5-16.1zm-10.6-30.7H544v16.1h97.2l-5.5-16.1zM720 611.5h80.1v16H720v-16zm0-30.8h80.1v16.1H720v-16.1zm0-30.7h48v16.1h-48V550zm0-30.7h48v16.1h-48v-16.1zm0-14.6h48v-16.1h-91.5l-4.5 13-4.5-13H576v16.1h48v-14.8l5.1 14.8h85.8l5.1-14.8v14.8zm48.1-46.9h-80.9l-5.5 16.1h86.4v-16.1zm-59.6-61.4-5.5 16.1h97.2v-16.1h-91.7zm-36.5 231 5.5-15.9h-11.1l5.6 15.9zm-10.6-30.6h21.2l5.7-16.1h-32.6l5.7 16.1zm-10.8-30.7h42.8L699 550h-54l5.6 16.1zm-10.7-30.7h64.3l5.5-16.1h-75.3l5.5 16.1zM576 473.9h86.5l-5.5-16.1h-81v16.1zm116.3-30.7h107.8v-16.1H697.8l-5.5 16.1zm0 0" style="fill:#fff"></path></svg>
+          </a>
+          <!-- Zabbix -->
+          <a href="https://www.zabbix.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site do Zabbix">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 135" class="tech-svg"><title>Zabbix SVG Icon</title><path fill="#D40000" d="M0 0h512v134.095H0z"></path><path fill="#FFF" d="M21.943 20.419H96v9.752L36.267 103.01h61.257v10.666H20.419v-9.752l59.733-72.838h-58.21zm125.562 12.495l-17.372 46.324h34.743zM140.19 20.42h14.324l35.962 93.257h-13.105l-8.533-23.771h-42.667l-8.533 23.771h-13.41zm76.8 48.762v34.133h20.42c7.009 0 11.885-1.524 15.238-4.266c3.352-2.743 4.876-7.01 4.876-12.8c0-5.79-1.524-10.058-4.876-12.8c-3.353-2.743-8.534-4.267-15.238-4.267zm0-38.4V58.82h18.896c6.095 0 10.971-1.219 14.019-3.352c3.047-2.438 4.571-5.79 4.571-10.667c0-4.571-1.524-8.229-4.571-10.667c-3.048-2.438-7.62-3.352-14.02-3.352zm-12.8-10.362h32.61c9.752 0 17.067 2.133 22.552 6.095c5.181 3.962 7.924 9.753 7.924 17.067c0 5.79-1.219 10.362-3.962 13.714c-2.743 3.353-6.704 5.486-11.885 6.4c6.4 1.22 11.276 3.962 14.628 8.229c3.353 4.266 5.181 9.447 5.181 15.847c0 8.229-2.743 14.629-8.533 19.2c-5.79 4.572-13.715 6.705-24.381 6.705H204.19zm100.267 48.762v34.133h20.42c6.704 0 11.885-1.524 15.237-4.266c3.353-2.743 4.876-7.01 4.876-12.8c0-5.79-1.523-10.058-4.876-12.8c-3.352-2.743-8.533-4.267-15.238-4.267zm0-38.4V58.82h18.895c6.096 0 10.972-1.219 14.02-3.352c3.047-2.438 4.57-5.79 4.57-10.667c0-4.571-1.523-8.229-4.57-10.667c-3.048-2.438-7.62-3.352-14.02-3.352zm-12.8-10.362h32.61c9.752 0 17.066 2.133 22.552 6.095c5.181 3.962 7.924 9.753 7.924 17.067c0 5.79-1.22 10.362-3.962 13.714c-2.743 3.353-6.705 5.486-11.886 6.4c6.4 1.22 11.276 3.962 14.629 8.229c3.352 4.266 5.18 9.447 5.18 15.847c0 8.229-2.742 14.629-8.533 19.2c-5.79 4.572-13.714 6.705-24.38 6.705h-34.134zm87.162 0h12.8v93.257h-12.8zm36.876 0h14.02l22.247 33.524l22.552-33.524h13.41L458.667 64l32.914 49.676h-14.02l-25.904-39.01l-25.905 39.01h-13.714l32.914-49.371z"></path></svg>
+          </a>
+          <!-- Grafana -->
+          <a href="https://grafana.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site da Grafana">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-label="Grafana" role="img" viewBox="0 0 512 512" class="tech-svg"><rect width="512" height="512" rx="15%"></rect><linearGradient id="a" x1="9%" y1="30%" x2="9%" y2="99%"><stop stop-color="#F05A28" offset="0"></stop><stop offset="1" stop-color="#FBCA0A"></stop></linearGradient><path fill="url(#a)" d="M390 146c5-22-7-40-7-40-20-2-34 6-38 10-13-6-26-9-39-11-9-29-35-41-35-41a78 78 0 00-34 45c-16 5-31 12-43 21-24-10-53-9-77 2-3 43 16 70 20 74-5 14-9 29-10 42-37 19-48 56-48 56 16 17 43 38 67 38 7 12 15 22 24 32-11 32 1 58 1 58 35 2 57-15 62-18 19 5 37 9 56 8 11 14 27 23 45 26 11-16 21-33 21-49 14-10 26-23 35-37 22 2 39-14 39-14-3-14-10-30-22-38 3-23-2-46-13-65-19-30-51-47-85-47-23 0-44 11-58 27a71 71 0 00-15 65c5 19 21 35 38 39s34 2 43-7c3-3-1-8-5-6-7 3-14 4-22 3-59-9-45-86 10-89 11-2 26 3 35 7 32 21 39 52 26 84a92 92 0 01-76 51c-18 0-35-5-49-12-34-20-56-53-58-92-3-76 41-110 90-121 29-6 61-3 87 10 36 18 61 52 72 91 1 4 6 4 6-1 0-38-17-75-43-101z"></path></svg>
+          </a>
+      </div>
+    </div>
+    <div class="footer-col footer-social">
+        <a href="https://github.com/rmartini3" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil no GitHub">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" title="GitHub"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297 24 5.67 18.63 0 12 0z"></path></svg>
+        </a>
+        <a href="https://linkedin.com/in/rafael-martiniano" target="_blank" rel="noopener noreferrer" aria-label="Ver perfil no LinkedIn">
+          <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" title="LinkedIn"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 0 1 2.063-2.065 2.064 2.064 0 0 1 2.063 2.065c0 1.14-.925 2.065-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path></svg>
+        </a>
+    </div>
+  </footer>
+  <script src="../funcionamento/motor.js"></script>
+  <script src="../funcionamento/mobile.js"></script>
+</body>
+</html>

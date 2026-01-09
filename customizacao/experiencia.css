@@ -1,0 +1,70 @@
+/* ==== Linha do tempo da Experiência ==== */
+.timeline {
+  position: relative;
+  margin: 2rem auto;
+  padding-left: 40px;
+  max-width: 800px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-accent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 20px;
+  background: var(--color-bg-secondary);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  padding-bottom: 1rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 18px;
+  width: 15px;
+  height: 15px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+.timeline-item h2 {
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-item p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.timeline-item ul {
+  margin-left: 1.2rem;
+}
+
+.timeline-item ul li {
+  margin-bottom: 0.4rem;
+}
+
+/* Animação de fade-in para os itens da timeline */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

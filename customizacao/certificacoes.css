@@ -1,0 +1,106 @@
+/* ==========================================================================
+   ESTILOS: certificacoes.css (Página de Certificações)
+   DESCRIÇÃO: Estiliza a seção de certificações, incluindo cards e layout.
+   ATUALIZAÇÃO: 2024-10-27 | Rafael Martiniano
+   MODIFICAÇÕES:
+     - Adicionado prefixo -webkit- para transições.
+     - Removido bloco de comentário obsoleto `[data-aos]`.
+     - Garantida a consistência das microinterações.
+   ========================================================================== */
+
+/* =================================================
+   ESTILOS DA PÁGINA DE CERTIFICAÇÕES
+   ================================================= */
+
+.certificacoes-principais h2,
+.outros-cursos h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.cert-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 4rem;
+}
+
+.cert-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 2rem;
+  -webkit-transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
+  max-width: 280px; /* Largura máxima para cada card */
+  text-align: center;
+}
+
+.cert-card:hover {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.cert-card a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  height: 100%;
+}
+
+.cert-logo {
+  height: 80px;  /* Altura padrão para todos os logos */
+  width: auto;   /* Largura automática para manter a proporção */
+  object-fit: contain; /* Garante que a imagem se ajuste sem distorcer */
+  margin-bottom: 0.5rem;
+}
+
+.cert-verification-code {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+.outros-cursos {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 8px;
+}
+
+.outros-cursos p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem auto;
+  color: var(--color-text-secondary);
+}
+
+.credly-link .botao-destaque {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .cert-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .cert-card {
+    width: 90%;
+    min-width: unset;
+    max-width: 400px;
+  }
+}

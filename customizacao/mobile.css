@@ -1,0 +1,135 @@
+/* ==========================================================================
+   ESTILOS: mobile.css (Navegação Responsiva - AVANÇADA)
+   ========================================================================== */
+
+/* --- Estilos Base (Desktop e Default) --- */
+
+/* Garantia de que o menu de links está visível e horizontal no Desktop */
+header nav {
+    display: block;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1.5rem; 
+    align-items: center;
+}
+
+/* O menu-toggle deve estar escondido por padrão no Desktop */
+.menu-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+    width: 24px;
+    height: 18px;
+    position: relative;
+}
+
+/* --- Estilos do Hambúrguer e Overlay (Mantidos) --- */
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text-primary);
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger { top: 50%; transform: translateY(-50%); }
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* Animação para "X" */
+.menu-toggle.is-active .hamburger { background: transparent; }
+.menu-toggle.is-active .hamburger::before { top: 0; transform: rotate(45deg); }
+.menu-toggle.is-active .hamburger::after { top: 0; transform: rotate(-45deg); }
+.menu-toggle.is-active .hamburger::before,
+.menu-toggle.is-active .hamburger::after { background: #fff; }
+
+/* Menu Overlay (Off-canvas) */
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  
+  /* CORREÇÃO DE COMPATIBILIDADE SAFARI */
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(100%);
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s 0.4s;
+}
+
+.nav-mobile.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: transform 0.4s ease, opacity 0.4s ease, visibility 0s 0s; 
+}
+
+.nav-mobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.nav-mobile nav { display: block; }
+.nav-mobile a { 
+  font-size: 1.5rem; 
+  color: #fff; 
+  text-decoration: none; 
+  font-weight: 500; 
+  transition: color 0.2s;
+}
+
+.nav-mobile a:hover,
+.nav-mobile a.active { color: var(--color-accent-hover); }
+.nav-mobile #theme-toggle { display: flex; }
+
+
+/* --- Ícone do Menu Hambúrguer --- */
+
+/* ==== Breakpoint Mobile (<= 768px) ==== */
+@media (max-width: 768px) {
+  
+  /* 1. Esconde a navegação principal do cabeçalho */
+  header nav {
+    display: none;
+  }
+
+  /* 2. Mostra o botão de menu hambúrguer */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* 3. Esconde o botão de tema do cabeçalho */
+  .header-actions #theme-toggle {
+    display: none;
+  }
+}
